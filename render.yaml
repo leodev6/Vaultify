@@ -10,7 +10,7 @@ services:
       - key: SPRING_PROFILES_ACTIVE
         value: "prod"
       - key: DB_URL
-        value: "jdbc:postgresql://dpg-cxxxxx-aaaa-aaaa-aaaa-aaaa.renderinternal.com:5432/vaultify"
+        value: "jdbc:postgresql://vaultify_eo8i_user:uzLYUlgEENjwenyoKGdBnxLFZOqUhusC@dpg-d74rh295pdvs738d1h6g-a/vaultify_eo8i:5432/vaultify"
         sync: false
       - key: DB_USERNAME
         value: "vaultify"
@@ -25,4 +25,4 @@ services:
         value: "your-32-byte-hex-key"
         sync: false
       - key: APP_HOST
-        value: "https://your-netlify-app.netlify.app"
+        value: "https://gestionliens.netlify.app"
