@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: vaultify-api
+    env: java
+    buildCommand: mvn clean package -DskipTests
+    startCommand: java -jar target/vaultify-0.0.1-SNAPSHOT.jar
+    envVars:
+      - key: PORT
+        value: "8080"
+      - key: SPRING_PROFILES_ACTIVE
+        value: "prod"
+      - key: DB_URL
+        value: "jdbc:postgresql://dpg-cxxxxx-aaaa-aaaa-aaaa-aaaa.renderinternal.com:5432/vaultify"
+        sync: false
+      - key: DB_USERNAME
+        value: "vaultify"
+        sync: false
+      - key: DB_PASSWORD
+        value: "your-db-password"
+        sync: false
+      - key: JWT_SECRET
+        value: "generate-a-32-character-minimum-secret-key-here"
+        sync: false
+      - key: ENCRYPTION_KEY
+        value: "your-32-byte-hex-key"
+        sync: false
+      - key: APP_HOST
+        value: "https://your-netlify-app.netlify.app"
