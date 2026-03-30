@@ -31,7 +31,7 @@ services:
       ENCRYPTION_KEY: a89343b4f7c2d1e5a6b7c8d9e0f1a2b3
       APP_HOST: http://localhost:5173
     ports:
-      - "8080:8080"
+      - "0.0.0.0:8080:8080"
     depends_on:
       postgres:
         condition: service_healthy

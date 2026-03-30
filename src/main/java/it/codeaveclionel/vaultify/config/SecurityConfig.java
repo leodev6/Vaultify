@@ -57,10 +57,9 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(List.of(
-            "https://gestionliens.netlify.app",
-            "https://www.gestionliens.netlify.app",
             "http://localhost:5173",
-            "http://localhost:3000"
+            "http://localhost:3000",
+            "http://localhost:5173"
         ));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
