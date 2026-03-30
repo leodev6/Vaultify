@@ -1,0 +1,40 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: vaultify-db
+    environment:
+      POSTGRES_DB: vaultify
+      POSTGRES_USER: vaultify
+      POSTGRES_PASSWORD: vaultify_password_2024
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vaultify -d vaultify"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vaultify-backend
+    environment:
+      PORT: 8080
+      SPRING_PROFILES_ACTIVE: prod
+      DB_URL: jdbc:postgresql://postgres:5432/vaultify
+      DB_USERNAME: vaultify
+      DB_PASSWORD: vaultify_password_2024
+      JWT_SECRET: vaultify-jwt-secret-key-minimum-32-characters
+      ENCRYPTION_KEY: a89343b4f7c2d1e5a6b7c8d9e0f1a2b3
+      APP_HOST: http://localhost:5173
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
